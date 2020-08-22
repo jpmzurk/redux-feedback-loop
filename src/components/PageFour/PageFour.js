@@ -8,7 +8,7 @@ class PageFour extends Component {
 
     dispatchComments = (comments) => {
         console.log(comments);
-        this.props.dispatch({ type: 'ADD_COMMENT', payload: comments })
+        this.props.dispatch({ type: 'SET_COMMENT', payload: comments })
     }
 
     directPrevious = () => { this.props.history.push('/pageThree') }

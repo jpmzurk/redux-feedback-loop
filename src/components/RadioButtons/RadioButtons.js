@@ -46,26 +46,17 @@ export default function RadioButtons (props) {
       </RadioGroup>
       <FormHelperText>{helperText}</FormHelperText>
     <div style={{ display: 'inline-flex' }}> 
-      <Button 
-        type="button" 
-        display="inline"
-        variant="outlined" 
-        color="primary" 
+      <Button type="button" display="inline" variant="outlined" color="primary" 
         onClick={() => {
             props.directPrevious();
         }}> 
         PREVIOUS 
       </Button>
-      <Button 
-        type="button" 
-        display="inline"
-        variant="outlined" 
-        color="primary" 
+      <Button type="button" display="inline" variant="outlined" color="primary" 
         onClick={() => {
             props.directNext();
             emptyValue();
-        } }
-        > 
+        }}> 
         Next 
       </Button>
       </div>

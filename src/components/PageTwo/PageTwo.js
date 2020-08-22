@@ -13,7 +13,7 @@ class PageTwo extends Component {
             checkedValue: newState
         })
         console.log(newState);
-        this.props.dispatch({ type: 'ADD_VALUE', payload: newState })
+        this.props.dispatch({ type: 'SET_UNDERSTAND', payload: newState })
     }
 
     directNext = () => {

@@ -11,7 +11,11 @@ class ReviewFeedback extends Component {
         return (
             <div>
                 <h2> Review your Feedback </h2>
-                <p> {this.props.feedbackValues} </p>
+                <p> {this.props.feeling} </p>
+                <p> {this.props.understanding} </p>
+                <p> {this.props.supported} </p>
+                <p> {this.props.comments} </p>
+                {/* <p> {this.props.comments} </p> */}
                 {/* <RadioButtons
                     directNext={this.directNext}
                     directPrevious={this.directPrevious}
@@ -22,7 +26,7 @@ class ReviewFeedback extends Component {
                 </Button>
                 <Button display="inline" variant="outlined" color="primary"
                     onClick={this.next}>
-                    Next
+                    SUBMIT
                 </Button>
             </div>
         );
@@ -31,8 +35,11 @@ class ReviewFeedback extends Component {
 
 const mapStateToProps = (reduxState) => {
     return {
-        feedbackValues: reduxState.feedbackValues,
-        comments: reduxState.comments
+        feeling: reduxState.feedbackValues.feeling,
+        understanding: reduxState.feedbackValues.understanding,
+        supported: reduxState.feedbackValues.supported,
+        comments: reduxState.feedbackValues.comments,
+        // comments: reduxState.comments
     }
 }
 

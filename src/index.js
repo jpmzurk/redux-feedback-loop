@@ -6,31 +6,32 @@ import { logger } from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-//get feedback
-const getFeedback = (state = [], action) => {
-    if (action.type === 'GET_FEEDBACK'){
-        return action.payload
-    }
-    return state;
+    //make new object by replacing old
+    //aka replace object key value w/out mutating
+function updateObject(oldObject, newValues) {
+    return Object.assign({}, oldObject, newValues)
 }
 
-//MAKE A REDUCER FOR EACH PAGE???d
-///TRY CHOOSING LAST VALUE OF ARRAY FOR EACH REDUCER
+const initialState = {
+    feeling: 0,
+    understanding: 0,
+    supported: 0,
+    comments: ''
+  }
 
-
-//add to list of feedback
-const feedbackValues = (state = [], action) => {
- 
-    if (action.type === 'ADD_VALUE'){
-        return [...state, action.payload]
-    } 
-    return state;
-};
-
-const comments = (state = [], action) => {
-    if (action.type === 'ADD_COMMENT'){
-        return action.payload
-    } 
+const feedbackValues = (state = initialState, action) => {
+    if (action.type === 'SET_FEELING'){
+        return updateObject(state, {feeling : action.payload})
+    }
+    else if (action.type === 'SET_UNDERSTAND') {
+        return updateObject(state, {understanding : action.payload})
+    }
+    else if (action.type === 'SET_SUPPORTED') {
+        return updateObject(state, {understanding : action.payload})
+    }
+    else if (action.type === 'SET_COMMENT') {
+        return updateObject(state, {comments : action.payload})
+    }
     return state;
 };
 
@@ -38,7 +39,6 @@ const comments = (state = [], action) => {
 const store = createStore(
     combineReducers({
         feedbackValues,
-        comments
     }),   
     applyMiddleware(logger),
  );

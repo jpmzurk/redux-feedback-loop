@@ -13,14 +13,15 @@ class PageOne extends Component {
             checkedValue: newState
         })
         console.log(newState)
-        this.props.dispatch({ type: 'ADD_VALUE', payload: newState })
+        this.props.dispatch({ type: 'SET_FEELING', payload: newState })
     }
 
     directNext = () => {
         if (this.state.checkedValue === '') {
             return
-        } else
+        } else {
             this.props.history.push('/pageTwo')
+        }
     }
     
     directPrevious = () => { this.props.history.push('/') }
