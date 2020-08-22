@@ -14,7 +14,7 @@ const getFeedback = (state = [], action) => {
     return state;
 }
 
-//MAKE A REDUCER FOR EACH PAGE???
+//MAKE A REDUCER FOR EACH PAGE???d
 ///TRY CHOOSING LAST VALUE OF ARRAY FOR EACH REDUCER
 
 

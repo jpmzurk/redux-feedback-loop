@@ -1,25 +1,45 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import RadioButtons from '../RadioButtons/RadioButtons';
 import { connect } from 'react-redux';
-
+import Button from '@material-ui/core/Button';
 
 class PageFour extends Component {
+    //local state only
+    state = {
+        checkedValue: ''
+    }
+
     radioValue = (newState) => {
-        console.log(newState)
+        this.setState({
+            checkedValue: newState
+        })
+        console.log(newState);
         this.props.dispatch({ type: 'ADD_VALUE', payload: newState })
     }
 
-    next = () => { this.props.history.push('/reviewFeedback') }
-
+    // directNext = () => {
+    //     if (this.state.checkedValue === '') {
+    //         return
+    //     } else 
+    //         this.props.history.push('/reviewFeedback')
+    // }
+    directNext = () => { this.props.history.push('/reviewFeedback') }
+    directPrevious = () => { this.props.history.push('/pageThree') }
     render() {
         return (
             <div>
-                <p>PageFour</p>
-                <p> Any comments you want to leave?</p>
-                <RadioButtons stateValue={this.radioValue} />
-                <Button onClick={this.next}> Next </Button>
-                <p> {this.props.feedbackValues} </p>
+                <h2> Any comments you want to leave?</h2>
+                {/* <RadioButtons
+                    directNext={this.directNext}
+                    directPrevious={this.directPrevious}
+                /> */}
+                 <Button display="inline" variant="outlined" color="primary"
+                    onClick={this.directPrevious}>
+                    PREVIOUS
+                </Button>
+                <Button display="inline" variant="outlined" color="primary"
+                    onClick={this.directNext}>
+                    Next
+                </Button>
             </div>
         );
     }

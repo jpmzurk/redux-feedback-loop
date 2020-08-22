@@ -9,7 +9,7 @@ class Start extends Component {
         return (
             <div>
                 <h1> Start your FeedBack </h1>
-                <Button onClick={this.next}> START </Button>
+                <Button variant="outlined" color="primary" onClick={this.next}> START </Button>
             </div>
         );
     }
