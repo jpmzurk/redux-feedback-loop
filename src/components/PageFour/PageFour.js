@@ -1,45 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
+import TextField from '../TextField/TextField';
+
 
 class PageFour extends Component {
-    //local state only
-    state = {
-        checkedValue: ''
+
+    dispatchComments = (comments) => {
+        console.log(comments);
+        this.props.dispatch({ type: 'ADD_COMMENT', payload: comments })
     }
 
-    radioValue = (newState) => {
-        this.setState({
-            checkedValue: newState
-        })
-        console.log(newState);
-        this.props.dispatch({ type: 'ADD_VALUE', payload: newState })
-    }
-
-    // directNext = () => {
-    //     if (this.state.checkedValue === '') {
-    //         return
-    //     } else 
-    //         this.props.history.push('/reviewFeedback')
-    // }
-    directNext = () => { this.props.history.push('/reviewFeedback') }
     directPrevious = () => { this.props.history.push('/pageThree') }
+    directNext = () => { this.props.history.push('/reviewFeedback') }
+   
+   
     render() {
         return (
             <div>
                 <h2> Any comments you want to leave?</h2>
-                {/* <RadioButtons
-                    directNext={this.directNext}
+                <TextField 
                     directPrevious={this.directPrevious}
-                /> */}
-                 <Button display="inline" variant="outlined" color="primary"
-                    onClick={this.directPrevious}>
-                    PREVIOUS
-                </Button>
-                <Button display="inline" variant="outlined" color="primary"
-                    onClick={this.directNext}>
-                    Next
-                </Button>
+                    directNext={this.directNext}
+                    dispatchComments={this.dispatchComments}
+                />
+                
+                
             </div>
         );
     }

@@ -20,27 +20,25 @@ const getFeedback = (state = [], action) => {
 
 //add to list of feedback
 const feedbackValues = (state = [], action) => {
-    // TODO: Pizzas added to the cart
+ 
     if (action.type === 'ADD_VALUE'){
         return [...state, action.payload]
     } 
     return state;
 };
 
-// //holds user info
-// const userReducer = (state = [], action) => {
-//     if (action.type === 'ADD_NEW_USER') {
-//         return [...state, action.payload];
-//     }
-//     return state;
-// };
+const comments = (state = [], action) => {
+    if (action.type === 'ADD_COMMENT'){
+        return action.payload
+    } 
+    return state;
+};
 
 
 const store = createStore(
     combineReducers({
-        getFeedback,
         feedbackValues,
-        // userReducer
+        comments
     }),   
     applyMiddleware(logger),
  );

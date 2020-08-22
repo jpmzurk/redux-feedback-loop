@@ -31,7 +31,8 @@ class ReviewFeedback extends Component {
 
 const mapStateToProps = (reduxState) => {
     return {
-        feedbackValues: reduxState.feedbackValues
+        feedbackValues: reduxState.feedbackValues,
+        comments: reduxState.comments
     }
 }
 
