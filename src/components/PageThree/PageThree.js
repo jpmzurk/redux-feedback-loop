@@ -15,10 +15,10 @@ class PageThree extends Component {
         } else
             this.props.history.push('/pageFour')
     }
-    directPrevious = () => { 
+    directPrevious = () => {
         this.props.dispatch({ type: 'SET_UNDERSTANDING', payload: 0 })
         this.props.dispatch({ type: 'SET_SUPPORTED', payload: 0 })
-        this.props.history.push('/pageTwo') 
+        this.props.history.push('/pageTwo')
     }
 
     render() {

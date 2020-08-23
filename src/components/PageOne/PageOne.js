@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import backGroundStyle from '../Background/Background';
 
 class PageOne extends Component {
-    
+
     radioValue = (value) => {
         this.props.dispatch({ type: 'SET_FEELING', payload: value })
     }
@@ -12,15 +12,15 @@ class PageOne extends Component {
     directNext = () => {
         console.log(this.props.feeling);
         if (this.props.feeling === 0) {
-           return
+            return
         } else {
             this.props.history.push('/pageTwo')
         }
     }
-    
-    directPrevious = () => { 
+
+    directPrevious = () => {
         this.props.dispatch({ type: 'SET_FEELING', payload: 0 })
-        this.props.history.push('/') 
+        this.props.history.push('/')
     }
 
     render() {
@@ -32,7 +32,6 @@ class PageOne extends Component {
                     directNext={this.directNext}
                     directPrevious={this.directPrevious}
                 />
-                
             </div>
         );
     }

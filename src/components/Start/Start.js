@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {GreenButton} from '../Buttons/Buttons';
+import { GreenButton } from '../Buttons/Buttons';
 import backGroundStyle from '../Background/Background';
 
 class Start extends Component {
     next = () => {
         this.props.history.push('/PageOne')
-     }
+    }
     render() {
         return (
             <div style={backGroundStyle}>

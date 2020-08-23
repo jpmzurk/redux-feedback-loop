@@ -13,27 +13,25 @@ import Admin from '../Admin/Admin'
 
 
 class App extends Component {
-
-  render() { 
+  render() {
     return (
       <div className="App">
         <Router>
-        <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4><i>Don't forget it!</i></h4>
-        </header>
-        <main> 
-        <Route exact path="/" component={Start} />
-        <Route path="/pageOne" component={PageOne} />
-        <Route path="/pageTwo" component={PageTwo} />
-        <Route path="/pageThree" component={PageThree} />
-        <Route path="/pageFour" component={PageFour} />
-        <Route path="/reviewFeedback" component={ReviewFeedback} />
-        <Route path="/thanks" component={Thanks} />
-        <Route path="/admin" component={Admin} />
-        </main>
-        
-        </Router> 
+          <header className="App-header">
+            <h1 className="App-title">Feedback!</h1>
+            <h4><i>Don't forget it!</i></h4>
+          </header>
+          <main>
+            <Route exact path="/" component={Start} />
+            <Route path="/pageOne" component={PageOne} />
+            <Route path="/pageTwo" component={PageTwo} />
+            <Route path="/pageThree" component={PageThree} />
+            <Route path="/pageFour" component={PageFour} />
+            <Route path="/reviewFeedback" component={ReviewFeedback} />
+            <Route path="/thanks" component={Thanks} />
+            <Route path="/admin" component={Admin} />
+          </main>
+        </Router>
       </div>
     );
   }

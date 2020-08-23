@@ -4,22 +4,22 @@ import { connect } from 'react-redux';
 import backGroundStyle from '../Background/Background';
 
 class PageTwo extends Component {
-
     radioValue = (value) => {
-        this.props.dispatch({ type: 'SET_UNDERSTAND', payload: value }) 
+        this.props.dispatch({ type: 'SET_UNDERSTAND', payload: value })
     }
 
     directNext = () => {
         if (this.props.understanding === 0) {
             return
-        } else 
+        } else
             this.props.history.push('/pageThree')
     }
-   
-    directPrevious = () => { 
+
+    directPrevious = () => {
         this.props.dispatch({ type: 'SET_UNDERSTANDING', payload: 0 })
         this.props.dispatch({ type: 'SET_FEELING', payload: 0 })
-        this.props.history.push('/pageOne') }
+        this.props.history.push('/pageOne')
+    }
 
     render() {
         return (
