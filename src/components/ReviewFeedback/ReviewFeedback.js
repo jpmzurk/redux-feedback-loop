@@ -1,33 +1,44 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import { RedButton, GreenButton} from '../Buttons/Buttons';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 
 class ReviewFeedback extends Component {
 
-    next = () => { this.props.history.push('/thanks') }
-    back = () => { this.props.history.push('/pageFour') }
+    submitFeedback = (totalFeedback) => {
+        console.log(totalFeedback);
+
+        axios.post('/feedback', totalFeedback)
+          .then((response) => {
+            this.getPhotos();
+          }).catch((error) => {
+            console.log(error);
+          })
+      }
+
+    directNext = () => { 
+        
+        this.props.history.push('/thanks') }
+    directPrevious = () => { 
+        this.props.history.push('/pageFour') 
+        this.props.dispatch({ type: 'SET_COMMENT', payload: 'clear' })
+    }
     render() {
         return (
-            <div>
+            <div style={{ marginTop : '-1em'}}>
                 <h2> Review your Feedback </h2>
-                <p> {this.props.feeling} </p>
-                <p> {this.props.understanding} </p>
-                <p> {this.props.supported} </p>
-                <p> {this.props.comments} </p>
-                {/* <p> {this.props.comments} </p> */}
-                {/* <RadioButtons
-                    directNext={this.directNext}
-                    directPrevious={this.directPrevious}
-                /> */}
-                <Button display="inline" variant="outlined" color="primary"
-                    onClick={this.back}>
+                <p> How you feel (1-5): {this.props.feeling} </p>
+                <p> Your current understanding of content (1-5): {this.props.understanding} </p>
+                <p> Your support from Prime (1-5): {this.props.supported} </p>
+                <p> Your comments: {this.props.comments} </p>
+                <RedButton 
+                    onClick={this.directPrevious}>
                     PREVIOUS
-                </Button>
-                <Button display="inline" variant="outlined" color="primary"
-                    onClick={this.next}>
+                </RedButton>
+                <GreenButton 
+                    onClick={this.directNext}>
                     SUBMIT
-                </Button>
+                </GreenButton>
             </div>
         );
     }

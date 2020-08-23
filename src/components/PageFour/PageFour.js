@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Button from '@material-ui/core/Button';
-import TextField from '../TextField/TextField';
+import Comments from '../Comments/Comments';
 
 
 class PageFour extends Component {
@@ -11,15 +10,18 @@ class PageFour extends Component {
         this.props.dispatch({ type: 'SET_COMMENT', payload: comments })
     }
 
-    directPrevious = () => { this.props.history.push('/pageThree') }
+    directPrevious = () => { 
+        this.props.dispatch({ type: 'SET_SUPPORTED', payload: 0 })
+        this.props.history.push('/pageThree') 
+    }
     directNext = () => { this.props.history.push('/reviewFeedback') }
    
    
     render() {
         return (
-            <div>
+            <div style={{marginTop: '-3em'}}>
                 <h2> Any comments you want to leave?</h2>
-                <TextField 
+                <Comments 
                     directPrevious={this.directPrevious}
                     directNext={this.directNext}
                     dispatchComments={this.dispatchComments}
@@ -31,10 +33,6 @@ class PageFour extends Component {
     }
 }
 
-const mapStateToProps = (reduxState) => {
-    return {
-        feedbackValues: reduxState.feedbackValues
-    }
-}
 
-export default connect(mapStateToProps)(PageFour);
+
+export default connect()(PageFour);

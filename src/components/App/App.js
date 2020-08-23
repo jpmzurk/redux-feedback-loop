@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,9 +10,11 @@ import PageFour from '../PageFour/PageFour';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback'
 import Thanks from '../Thanks/Thanks'
 
+
+
 class App extends Component {
 
-  render() {
+  render() { 
     return (
       <div className="App">
         <Router>
@@ -21,6 +22,7 @@ class App extends Component {
           <h1 className="App-title">Feedback!</h1>
           <h4><i>Don't forget it!</i></h4>
         </header>
+        <main> 
         <Route exact path="/" component={Start} />
         <Route path="/pageOne" component={PageOne} />
         <Route path="/pageTwo" component={PageTwo} />
@@ -28,6 +30,7 @@ class App extends Component {
         <Route path="/pageFour" component={PageFour} />
         <Route path="/reviewFeedback" component={ReviewFeedback} />
         <Route path="/thanks" component={Thanks} />
+        </main>
         </Router> 
       </div>
     );

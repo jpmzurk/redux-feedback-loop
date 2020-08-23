@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import { GreenButton} from '../Buttons/Buttons';
 
 class Thanks extends Component {
     next = () => {this.props.history.push('/')}
@@ -8,7 +8,7 @@ class Thanks extends Component {
             <div>
                  <h1> THANKS!!! </h1>
                
-                <Button display="inline" variant="outlined" color="primary" onClick={this.next}> HOME </Button>
+                <GreenButton onClick={this.next}> HOME </GreenButton>
             </div>
         );
     }

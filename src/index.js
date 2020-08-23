@@ -6,8 +6,7 @@ import { logger } from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-    //make new object by replacing old
-    //aka replace object key value w/out mutating
+    //make new object by replacing old w/out mutating
 function updateObject(oldObject, newValues) {
     return Object.assign({}, oldObject, newValues)
 }
@@ -16,8 +15,8 @@ const initialState = {
     feeling: 0,
     understanding: 0,
     supported: 0,
-    comments: ''
-  }
+    comments: 'You left no comments'
+}
 
 const feedbackValues = (state = initialState, action) => {
     if (action.type === 'SET_FEELING'){
@@ -27,9 +26,14 @@ const feedbackValues = (state = initialState, action) => {
         return updateObject(state, {understanding : action.payload})
     }
     else if (action.type === 'SET_SUPPORTED') {
-        return updateObject(state, {understanding : action.payload})
+        return updateObject(state, {supported : action.payload})
     }
     else if (action.type === 'SET_COMMENT') {
+        if (action.payload === ''){
+            return state
+        } else if ( action.payload === 'clear') {
+            return updateObject(state, {comments : 'You left no comments'})
+        }  else 
         return updateObject(state, {comments : action.payload})
     }
     return state;
@@ -42,6 +46,9 @@ const store = createStore(
     }),   
     applyMiddleware(logger),
  );
+
+
+
   
   
  ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

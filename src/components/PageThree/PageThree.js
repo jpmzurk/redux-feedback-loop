@@ -3,26 +3,22 @@ import RadioButtons from '../RadioButtons/RadioButtons';
 import { connect } from 'react-redux';
 
 class PageThree extends Component {
-    //local state only
-    state = {
-        checkedValue: ''
-    }
     //getting values of radio buttons and dispatching
-    radioValue = (newState) => {
-        this.setState({
-            checkedValue: newState
-        })
-        console.log(newState)
-        this.props.dispatch({ type: 'SET_SUPPORTED', payload: newState })
+    radioValue = (value) => {
+        this.props.dispatch({ type: 'SET_SUPPORTED', payload: value })
     }
-    //stopping 
+
     directNext = () => {
-        if (this.state.checkedValue === '') {
+        if (this.props.supported === 0) {
             return
         } else
             this.props.history.push('/pageFour')
     }
-    directPrevious = () => { this.props.history.push('/pageTwo') }
+    directPrevious = () => { 
+        this.props.dispatch({ type: 'SET_UNDERSTANDING', payload: 0 })
+        this.props.dispatch({ type: 'SET_SUPPORTED', payload: 0 })
+        this.props.history.push('/pageTwo') 
+    }
 
     render() {
         return (
@@ -40,7 +36,7 @@ class PageThree extends Component {
 
 const mapStateToProps = (reduxState) => {
     return {
-        feedbackValues: reduxState.feedbackValues
+        supported: reduxState.feedbackValues.supported
     }
 }
 

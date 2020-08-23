@@ -3,28 +3,24 @@ import RadioButtons from '../RadioButtons/RadioButtons';
 import { connect } from 'react-redux';
 
 class PageOne extends Component {
-    //local state only
-    state = {
-        checkedValue: ''
-    }
-
-    radioValue = (newState) => {
-        this.setState({
-            checkedValue: newState
-        })
-        console.log(newState)
-        this.props.dispatch({ type: 'SET_FEELING', payload: newState })
+    
+    radioValue = (value) => {
+        this.props.dispatch({ type: 'SET_FEELING', payload: value })
     }
 
     directNext = () => {
-        if (this.state.checkedValue === '') {
-            return
+        console.log(this.props.feeling);
+        if (this.props.feeling === 0) {
+           return
         } else {
             this.props.history.push('/pageTwo')
         }
     }
     
-    directPrevious = () => { this.props.history.push('/') }
+    directPrevious = () => { 
+        this.props.dispatch({ type: 'SET_FEELING', payload: 0 })
+        this.props.history.push('/') 
+    }
 
     render() {
         return (
@@ -42,7 +38,7 @@ class PageOne extends Component {
 
 const mapStateToProps = (reduxState) => {
     return {
-        feedbackValues: reduxState.feedbackValues
+        feeling: reduxState.feedbackValues.feeling
     }
 }
 

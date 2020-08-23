@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import {GreenButton} from '../Buttons/Buttons';
 
 class Start extends Component {
     next = () => {
@@ -9,7 +9,7 @@ class Start extends Component {
         return (
             <div>
                 <h1> Start your FeedBack </h1>
-                <Button variant="outlined" color="primary" onClick={this.next}> START </Button>
+                <GreenButton onClick={this.next}> START </GreenButton>
             </div>
         );
     }
