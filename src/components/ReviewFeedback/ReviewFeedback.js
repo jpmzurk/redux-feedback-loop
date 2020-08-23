@@ -10,15 +10,18 @@ class ReviewFeedback extends Component {
 
         axios.post('/feedback', totalFeedback)
           .then((response) => {
-            this.getPhotos();
+            this.props.dispatch({ type: 'CLEAR'})
+            this.props.history.push('/thanks');
           }).catch((error) => {
             console.log(error);
           })
       }
 
+
+
     directNext = () => { 
-        
-        this.props.history.push('/thanks') }
+        this.submitFeedback(this.props.allFeedback);
+    }
     directPrevious = () => { 
         this.props.history.push('/pageFour') 
         this.props.dispatch({ type: 'SET_COMMENT', payload: 'clear' })
@@ -29,7 +32,7 @@ class ReviewFeedback extends Component {
                 <h2> Review your Feedback </h2>
                 <p> How you feel (1-5): {this.props.feeling} </p>
                 <p> Your current understanding of content (1-5): {this.props.understanding} </p>
-                <p> Your support from Prime (1-5): {this.props.supported} </p>
+                <p> Your support from Prime (1-5): {this.props.support} </p>
                 <p> Your comments: {this.props.comments} </p>
                 <RedButton 
                     onClick={this.directPrevious}>
@@ -48,9 +51,9 @@ const mapStateToProps = (reduxState) => {
     return {
         feeling: reduxState.feedbackValues.feeling,
         understanding: reduxState.feedbackValues.understanding,
-        supported: reduxState.feedbackValues.supported,
+        support: reduxState.feedbackValues.support,
         comments: reduxState.feedbackValues.comments,
-        // comments: reduxState.comments
+        allFeedback : reduxState.feedbackValues
     }
 }
 

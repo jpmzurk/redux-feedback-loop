@@ -14,7 +14,7 @@ function updateObject(oldObject, newValues) {
 const initialState = {
     feeling: 0,
     understanding: 0,
-    supported: 0,
+    support: 0,
     comments: 'You left no comments'
 }
 
@@ -26,7 +26,7 @@ const feedbackValues = (state = initialState, action) => {
         return updateObject(state, {understanding : action.payload})
     }
     else if (action.type === 'SET_SUPPORTED') {
-        return updateObject(state, {supported : action.payload})
+        return updateObject(state, {support : action.payload})
     }
     else if (action.type === 'SET_COMMENT') {
         if (action.payload === ''){
@@ -35,6 +35,9 @@ const feedbackValues = (state = initialState, action) => {
             return updateObject(state, {comments : 'You left no comments'})
         }  else 
         return updateObject(state, {comments : action.payload})
+    } 
+    else if (action.type === 'CLEAR') {
+        return updateObject(state, { initialState })
     }
     return state;
 };

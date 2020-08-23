@@ -6,8 +6,8 @@ class Thanks extends Component {
     render() { 
         return (
             <div>
-                 <h1> THANKS!!! </h1>
-               
+                 <h1> SUCCESS! </h1>
+                 <h2> Thanks for recording your feedback! </h2>
                 <GreenButton onClick={this.next}> HOME </GreenButton>
             </div>
         );
