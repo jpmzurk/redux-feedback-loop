@@ -42,10 +42,18 @@ const feedbackValues = (state = initialState, action) => {
     return state;
 };
 
+const adminFeedback = (state = [], action)=> {
+    if (action.type === 'SET_ALL_VALUES'){
+        return [...state, action.payload]
+    }
+    return state
+}
+
 
 const store = createStore(
     combineReducers({
         feedbackValues,
+        adminFeedback
     }),   
     applyMiddleware(logger),
  );

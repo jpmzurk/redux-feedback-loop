@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { RedButton, GreenButton} from '../Buttons/Buttons';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import backGroundStyle from '../Background/Background';
 
 class ReviewFeedback extends Component {
 
@@ -19,7 +20,10 @@ class ReviewFeedback extends Component {
 
 
 
-    directNext = () => { 
+    directNext = () => {
+        if ((this.props.feeling || this.props.understanding || this.props.support) === 0){
+            return alert('all ratings must be entered before submitting')
+        }
         this.submitFeedback(this.props.allFeedback);
     }
     directPrevious = () => { 
@@ -28,11 +32,12 @@ class ReviewFeedback extends Component {
     }
     render() {
         return (
-            <div style={{ marginTop : '-1em'}}>
+            <div style={backGroundStyle}>
+            <section style={{ marginTop : '-1em'}}>
                 <h2> Review your Feedback </h2>
-                <p> How you feel (1-5): {this.props.feeling} </p>
-                <p> Your current understanding of content (1-5): {this.props.understanding} </p>
-                <p> Your support from Prime (1-5): {this.props.support} </p>
+                <p> How you feel about a {this.props.feeling} out of 5</p>
+                <p> Your understanding of the latest content is about a {this.props.understanding} out of 5</p>
+                <p> Your support from Prime is about a {this.props.support} of 5</p>
                 <p> Your comments: {this.props.comments} </p>
                 <RedButton 
                     onClick={this.directPrevious}>
@@ -42,6 +47,7 @@ class ReviewFeedback extends Component {
                     onClick={this.directNext}>
                     SUBMIT
                 </GreenButton>
+            </section>
             </div>
         );
     }

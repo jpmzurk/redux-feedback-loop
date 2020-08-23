@@ -8,8 +8,8 @@ import PageTwo from '../PageTwo/PageTwo';
 import PageThree from '../PageThree/PageThree';
 import PageFour from '../PageFour/PageFour';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback'
-import Thanks from '../Thanks/Thanks'
-
+import Thanks from '../Success/Success'
+import Admin from '../Admin/Admin'
 
 
 class App extends Component {
@@ -30,7 +30,9 @@ class App extends Component {
         <Route path="/pageFour" component={PageFour} />
         <Route path="/reviewFeedback" component={ReviewFeedback} />
         <Route path="/thanks" component={Thanks} />
+        <Route path="/admin" component={Admin} />
         </main>
+        
         </Router> 
       </div>
     );

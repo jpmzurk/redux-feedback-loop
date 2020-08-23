@@ -5,6 +5,7 @@ CREATE DATABASE "prime_feedback";
 -- Table to store the feedback
 CREATE TABLE "feedback" (
   "id" serial primary key,
+  "student" text default 'student not named',
   "feeling" INT not null,
   "understanding" INT not null,
   "support" INT not null,

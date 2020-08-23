@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import { connect } from 'react-redux';
+import backGroundStyle from '../Background/Background';
 
 class PageTwo extends Component {
 
@@ -22,7 +23,7 @@ class PageTwo extends Component {
 
     render() {
         return (
-            <div>
+            <div style={backGroundStyle}>
                 <h2> How well are you understanding the content? </h2>
                 <RadioButtons
                     valueGetter={this.radioValue}

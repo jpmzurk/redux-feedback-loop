@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import { connect } from 'react-redux';
+import backGroundStyle from '../Background/Background';
 
 class PageOne extends Component {
     
@@ -24,13 +25,14 @@ class PageOne extends Component {
 
     render() {
         return (
-            <div>
+            <div style={backGroundStyle}>
                 <h2> How are you feeling today?</h2>
                 <RadioButtons
                     valueGetter={this.radioValue}
                     directNext={this.directNext}
                     directPrevious={this.directPrevious}
                 />
+                
             </div>
         );
     }

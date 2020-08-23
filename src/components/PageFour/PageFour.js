@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comments from '../Comments/Comments';
-
+import backGroundStyle from '../Background/Background';
 
 class PageFour extends Component {
 
@@ -19,7 +19,8 @@ class PageFour extends Component {
    
     render() {
         return (
-            <div style={{marginTop: '-3em'}}>
+            <div style={backGroundStyle}>
+            <section style={{marginTop: '-3em'}}>
                 <h2> Any comments you want to leave?</h2>
                 <Comments 
                     directPrevious={this.directPrevious}
@@ -28,6 +29,7 @@ class PageFour extends Component {
                 />
                 
                 
+            </section>
             </div>
         );
     }

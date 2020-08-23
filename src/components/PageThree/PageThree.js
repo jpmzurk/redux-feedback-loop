@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import { connect } from 'react-redux';
+import backGroundStyle from '../Background/Background';
 
 class PageThree extends Component {
     //getting values of radio buttons and dispatching
@@ -22,7 +23,7 @@ class PageThree extends Component {
 
     render() {
         return (
-            <div>
+            <div style={backGroundStyle}>
                 <h2> How well are you being supported? </h2>
                 <RadioButtons
                     valueGetter={this.radioValue}
