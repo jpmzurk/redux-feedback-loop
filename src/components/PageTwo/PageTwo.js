@@ -37,8 +37,9 @@ class PageTwo extends Component {
 
 const mapStateToProps = (reduxState) => {
     return {
-        understanding: reduxState.feedbackValues.understanding
+        understanding: reduxState.feedbackValues.understanding,
+        feeling: reduxState.feedbackValues.feeling,
     }
 }
 
-export default connect(mapStateToProps)(PageTwo);
+export default connect(mapStateToProps)(PageTwo)
