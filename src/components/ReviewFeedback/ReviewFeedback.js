@@ -23,14 +23,13 @@ class ReviewFeedback extends Component {
     }
     directPrevious = () => {
         this.props.history.push('/pageFour')
-        this.props.dispatch({ type: 'SET_COMMENT', payload: 'clear' })
     }
     render() {
         return (
             <div style={backGroundStyle}>
                 <section style={{ marginTop: '-1em' }}>
                     <h2> Review your Feedback </h2>
-                    <p> How you feel about a {this.props.feeling} out of 5</p>
+                    <p> How you feel is about a {this.props.feeling} out of 5</p>
                     <p> Your understanding of the latest content is about a {this.props.understanding} out of 5</p>
                     <p> Your support from Prime is about a {this.props.support} of 5</p>
                     <p> Your comments: {this.props.comments} </p>

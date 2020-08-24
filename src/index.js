@@ -31,8 +31,6 @@ const feedbackValues = (state = initialState, action) => {
     else if (action.type === 'SET_COMMENT') {
         if (action.payload === ''){
             return state
-        } else if ( action.payload === 'clear') {
-            return updateObject(state, {comments : 'You left no comments'})
         }  else 
         return updateObject(state, {comments : action.payload})
     } 
