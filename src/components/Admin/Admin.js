@@ -31,7 +31,7 @@ const Admin = (props) => {
 
     return (
         <div style= {background}>  
-         <h1 > Admin Page</h1>
+         <h1 style={{marginTop: '-1em', marginBottom: '1em', color: '#4a4a45'}}> Admin Page</h1>
             <AdminTable feedback={feedback} getValues={getValues}/>
             <GreenButton onClick={next} style={{marginTop: '2em'}}> HOME </GreenButton>
         </div>

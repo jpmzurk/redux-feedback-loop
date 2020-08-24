@@ -1,50 +1,62 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { RedButton, GreenButton } from '../Buttons/Buttons';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import backGroundStyle from '../Background/Background';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import { useState } from 'react';
 
-class ReviewFeedback extends Component {
-    submitFeedback = (totalFeedback) => {
+const ReviewFeedback = (props) => {
+    const [error, setError] = useState(false);
+    const [helperText, setHelperText] = useState('');
+
+    const submitFeedback = (totalFeedback) => {
         axios.post('/feedback', totalFeedback)
             .then((response) => {
-                this.props.dispatch({ type: 'CLEAR' })
-                this.props.history.push('/thanks');
+                props.dispatch({ type: 'CLEAR' })
+                props.history.push('/thanks');
             }).catch((error) => {
                 console.log(error);
             })
     }
 
-    directNext = () => {
-        if ((this.props.feeling || this.props.understanding || this.props.support) === 0) {
-            return alert('all ratings must be entered before submitting')
+    const directNext = () => {
+        if (((props.feeling || props.understanding || props.support) === 0) || props.student === '') {
+            setHelperText('Name and ratings must be completed before you can submit!');
+            setError(true);
+            return 
         }
-        this.submitFeedback(this.props.allFeedback);
+        submitFeedback(props.allFeedback);
     }
-    directPrevious = () => {
-        this.props.history.push('/pageFour')
+    const directPrevious = () => {
+        props.history.push('/pageFour')
     }
-    render() {
+    
         return (
             <div style={backGroundStyle}>
-                <section style={{ marginTop: '-1em' }}>
-                    <h2> Review your Feedback </h2>
-                    <p> How you feel is about a {this.props.feeling} out of 5</p>
-                    <p> Your understanding of the latest content is about a {this.props.understanding} out of 5</p>
-                    <p> Your support from Prime is about a {this.props.support} of 5</p>
-                    <p> Your comments: {this.props.comments} </p>
-                    <RedButton
-                        onClick={this.directPrevious}>
-                        PREVIOUS
-                </RedButton>
-                    <GreenButton
-                        onClick={this.directNext}>
-                        SUBMIT
-                </GreenButton>
+                <section style={{ marginTop: '-2.5em' }}>
+                    <FormControl component="fieldset"  error={error}>
+                        <h2> Review your Feedback </h2>
+                        <p> Your name: {props.student} </p>
+                        <p> How you feel is about a {props.feeling} out of 5</p>
+                        <p> Your understanding of the latest content is about a {props.understanding} out of 5</p>
+                        <p> Your support from Prime is about a {props.support} of 5</p>
+                        <p> Your comments: {props.comments} </p>
+                        <FormHelperText style={{paddingLeft: '4em'}}>{helperText}</FormHelperText>
+                    </FormControl >
                 </section>
+                <RedButton
+                    onClick={directPrevious}>
+                    PREVIOUS
+                </RedButton>
+                <GreenButton
+                    onClick={directNext}>
+                    SUBMIT
+                </GreenButton>
             </div>
         );
-    }
+    
 }
 
 const mapStateToProps = (reduxState) => {

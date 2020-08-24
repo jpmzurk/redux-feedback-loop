@@ -9,8 +9,14 @@ const useStyles = makeStyles(theme => ({
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(0),
-            width: '50ch',
+            width: '40ch',
         },
+        '& label.Mui-focused': {
+            color: '#65655e',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: '#65655e',
+          },
     },
 }));
 
@@ -29,9 +35,6 @@ export default function Comments(props) {
                     onChange={handleChange}
                     label="Leave comments here"
                     multiline
-                    defaultValue=""
-                    rows={7}
-                    variant="outlined"
                 />
             </div >
             <div className={'buttons'} >

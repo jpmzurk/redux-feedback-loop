@@ -15,7 +15,6 @@ export default function RadioButtons(props) {
     const handleChange = (event) => {
         setValue(event.target.value);
         props.valueGetter(Number(event.target.value));
-        setHelperText('');
         setError(false);
     };
 

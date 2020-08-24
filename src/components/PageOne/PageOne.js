@@ -20,7 +20,7 @@ class PageOne extends Component {
 
     directPrevious = () => {
         this.props.dispatch({ type: 'SET_FEELING', payload: 0 })
-        this.props.history.push('/')
+        this.props.history.push('/name')
     }
 
     render() {

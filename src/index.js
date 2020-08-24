@@ -15,7 +15,8 @@ const initialState = {
     feeling: 0,
     understanding: 0,
     support: 0,
-    comments: 'You left no comments'
+    comments: 'You left no comments',
+    student: 'name not provided'
 }
 
 const feedbackValues = (state = initialState, action) => {
@@ -37,21 +38,15 @@ const feedbackValues = (state = initialState, action) => {
     else if (action.type === 'CLEAR') {
         return updateObject(state, { initialState })
     }
+    else if (action.type === 'NAME') {
+        return updateObject(state, {student : action.payload})
+    }
     return state;
 };
-
-const adminFeedback = (state = [], action)=> {
-    if (action.type === 'SET_ALL_VALUES'){
-        return [...state, action.payload]
-    }
-    return state
-}
-
 
 const store = createStore(
     combineReducers({
         feedbackValues,
-        adminFeedback
     }),   
     applyMiddleware(logger),
  );

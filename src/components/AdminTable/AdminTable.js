@@ -11,11 +11,18 @@ import Moment from 'react-moment';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import axios from 'axios';
+// import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+// import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
+        maxWidth: '98%',
     },
+    margins: {
+        marginLeft: '.75em',
+        marginRight: '1em'
+    }
 });
 
 
@@ -25,6 +32,8 @@ export default function AdminTable(props) {
     const updateCheckIn = (id) => {
         axios.put(`/feedback/${id}`)
             .then((response) => {
+                console.log(response);
+                
                 props.getValues();
             })
             .catch((error) => {
@@ -42,9 +51,9 @@ export default function AdminTable(props) {
 
 
     return (
-
-        <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
+        <Paper className={classes.margins}>
+        <TableContainer variant="outlined" className={classes.margins}>
+            <Table className={classes.table} aria-label="simple table" >
                 <TableHead>
                     <TableRow>
                         <TableCell>Student</TableCell>
@@ -57,33 +66,32 @@ export default function AdminTable(props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.feedback.map((row) => (
-                        <TableRow key={row.id}>
+                    {props.feedback.map((feedback) => (
+                        <TableRow key={feedback.id}>
                             <TableCell component="th" scope="row">
-                                {row.student}
+                                {feedback.student}
                             </TableCell>
-                            <TableCell align="right">{row.feeling}</TableCell>
-                            <TableCell align="right">{row.understanding}</TableCell>
-                            <TableCell align="right">{row.support}</TableCell>
+                            <TableCell align="right">{feedback.feeling}</TableCell>
+                            <TableCell align="right">{feedback.understanding}</TableCell>
+                            <TableCell align="right">{feedback.support}</TableCell>
                             <TableCell align="right">
                                 <FormControlLabel control={
-                                    <Switch checked={row.flagged}
-                                        onChange={handleToggle(row.id)}
+                                    <Switch checked={feedback.flagged}
+                                            onChange={handleToggle(feedback.id)}
                                     />}
-
                                 />
-                                {row.flagged === true ? "Needs One" : "Doesn't"}
+                                {feedback.flagged === true ? "Needs One" : "Doesn't"}
                             </TableCell>
-                            <TableCell align="right">{row.comments}</TableCell>
+                            <TableCell align="right">{feedback.comments}</TableCell>
                             <TableCell align="right"><Moment format="MM/DD/YYYY">
-                                {row.date}
+                                {feedback.date}
                             </Moment>
                             </TableCell>
-
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
+        </Paper>
     );
 }

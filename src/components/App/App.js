@@ -3,6 +3,7 @@ import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Start from '../Start/Start';
+import NameInput from '../NameInput/NameInput'
 import PageOne from '../PageOne/PageOne';
 import PageTwo from '../PageTwo/PageTwo';
 import PageThree from '../PageThree/PageThree';
@@ -23,6 +24,7 @@ class App extends Component {
           </header>
           <main>
             <Route exact path="/" component={Start} />
+            <Route path="/name" component={NameInput} />
             <Route path="/pageOne" component={PageOne} />
             <Route path="/pageTwo" component={PageTwo} />
             <Route path="/pageThree" component={PageThree} />

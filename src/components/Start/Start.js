@@ -4,7 +4,7 @@ import backGroundStyle from '../Background/Background';
 
 class Start extends Component {
     next = () => {
-        this.props.history.push('/PageOne')
+        this.props.history.push('/name')
     }
     render() {
         return (
