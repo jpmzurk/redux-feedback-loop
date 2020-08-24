@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
         },
         '& .MuiInput-underline:after': {
             borderBottomColor: '#65655e',
-          },
+        },
     },
 }));
 

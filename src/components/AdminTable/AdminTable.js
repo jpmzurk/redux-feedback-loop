@@ -11,8 +11,6 @@ import Moment from 'react-moment';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import axios from 'axios';
-// import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-// import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 const useStyles = makeStyles({
     table: {
@@ -24,7 +22,6 @@ const useStyles = makeStyles({
         marginRight: '1em'
     }
 });
-
 
 export default function AdminTable(props) {
     const classes = useStyles();
@@ -48,7 +45,6 @@ export default function AdminTable(props) {
         console.log(id);        
         updateCheckIn(id);
     }
-
 
     return (
         <Paper className={classes.margins}>

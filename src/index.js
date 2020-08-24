@@ -6,7 +6,7 @@ import { logger } from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-    //make new object by replacing old w/out mutating
+//make new object by replacing old w/out mutating
 function updateObject(oldObject, newValues) {
     return Object.assign({}, oldObject, newValues)
 }
@@ -20,26 +20,26 @@ const initialState = {
 }
 
 const feedbackValues = (state = initialState, action) => {
-    if (action.type === 'SET_FEELING'){
-        return updateObject(state, {feeling : action.payload})
+    if (action.type === 'SET_FEELING') {
+        return updateObject(state, { feeling: action.payload })
     }
     else if (action.type === 'SET_UNDERSTAND') {
-        return updateObject(state, {understanding : action.payload})
+        return updateObject(state, { understanding: action.payload })
     }
     else if (action.type === 'SET_SUPPORTED') {
-        return updateObject(state, {support : action.payload})
+        return updateObject(state, { support: action.payload })
     }
     else if (action.type === 'SET_COMMENT') {
-        if (action.payload === ''){
+        if (action.payload === '') {
             return state
-        }  else 
-        return updateObject(state, {comments : action.payload})
-    } 
+        } else
+            return updateObject(state, { comments: action.payload })
+    }
     else if (action.type === 'CLEAR') {
         return updateObject(state, { initialState })
     }
     else if (action.type === 'NAME') {
-        return updateObject(state, {student : action.payload})
+        return updateObject(state, { student: action.payload })
     }
     return state;
 };
@@ -47,12 +47,8 @@ const feedbackValues = (state = initialState, action) => {
 const store = createStore(
     combineReducers({
         feedbackValues,
-    }),   
+    }),
     applyMiddleware(logger),
- );
+);
 
-
-
-  
-  
- ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

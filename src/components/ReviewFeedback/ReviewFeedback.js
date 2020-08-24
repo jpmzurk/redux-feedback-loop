@@ -1,11 +1,12 @@
 import React from 'react';
-import { RedButton, GreenButton } from '../Buttons/Buttons';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { RedButton, GreenButton } from '../Buttons/Buttons';
 import backGroundStyle from '../Background/Background';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import { useState } from 'react';
+
 
 const ReviewFeedback = (props) => {
     const [error, setError] = useState(false);
@@ -25,38 +26,38 @@ const ReviewFeedback = (props) => {
         if (((props.feeling || props.understanding || props.support) === 0) || props.student === '') {
             setHelperText('Name and ratings must be completed before you can submit!');
             setError(true);
-            return 
+            return
         }
         submitFeedback(props.allFeedback);
     }
     const directPrevious = () => {
         props.history.push('/pageFour')
     }
-    
-        return (
-            <div style={backGroundStyle}>
-                <section style={{ marginTop: '-2.5em' }}>
-                    <FormControl component="fieldset"  error={error}>
-                        <h2> Review your Feedback </h2>
-                        <p> Your name: {props.student} </p>
-                        <p> How you feel is about a {props.feeling} out of 5</p>
-                        <p> Your understanding of the latest content is about a {props.understanding} out of 5</p>
-                        <p> Your support from Prime is about a {props.support} of 5</p>
-                        <p> Your comments: {props.comments} </p>
-                        <FormHelperText style={{paddingLeft: '4em'}}>{helperText}</FormHelperText>
-                    </FormControl >
-                </section>
-                <RedButton
-                    onClick={directPrevious}>
-                    PREVIOUS
+
+    return (
+        <div style={backGroundStyle}>
+            <section style={{ marginTop: '-2.5em' }}>
+                <FormControl component="fieldset" error={error}>
+                    <h2> Review your Feedback </h2>
+                    <p> Your name: {props.student} </p>
+                    <p> How you feel is about a {props.feeling} out of 5</p>
+                    <p> Your understanding of the latest content is about a {props.understanding} out of 5</p>
+                    <p> Your support from Prime is about a {props.support} of 5</p>
+                    <p> Your comments: {props.comments} </p>
+                    <FormHelperText style={{ paddingLeft: '4em' }}>{helperText}</FormHelperText>
+                </FormControl >
+            </section>
+            <RedButton
+                onClick={directPrevious}>
+                PREVIOUS
                 </RedButton>
-                <GreenButton
-                    onClick={directNext}>
-                    SUBMIT
+            <GreenButton
+                onClick={directNext}>
+                SUBMIT
                 </GreenButton>
-            </div>
-        );
-    
+        </div>
+    );
+
 }
 
 const mapStateToProps = (reduxState) => {

@@ -12,7 +12,6 @@ import ReviewFeedback from '../ReviewFeedback/ReviewFeedback'
 import Thanks from '../Success/Success'
 import Admin from '../Admin/Admin'
 
-
 class App extends Component {
   render() {
     return (
