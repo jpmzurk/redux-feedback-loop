@@ -10,13 +10,13 @@ class PageThree extends Component {
     }
 
     directNext = () => {
-        if (this.props.supported === 0) {
+        if (this.props.support === 0) {
             return
         } else
             this.props.history.push('/pageFour')
     }
     directPrevious = () => {
-        this.props.dispatch({ type: 'SET_UNDERSTANDING', payload: 0 })
+        this.props.dispatch({ type: 'SET_UNDERSTAND', payload: 0 })
         this.props.dispatch({ type: 'SET_SUPPORTED', payload: 0 })
         this.props.history.push('/pageTwo')
     }
@@ -37,7 +37,7 @@ class PageThree extends Component {
 
 const mapStateToProps = (reduxState) => {
     return {
-        supported: reduxState.feedbackValues.supported
+        support: reduxState.feedbackValues.support
     }
 }
 

@@ -30,7 +30,6 @@ export default function AdminTable(props) {
         axios.put(`/feedback/${id}`)
             .then((response) => {
                 console.log(response);
-                
                 props.getValues();
             })
             .catch((error) => {

@@ -7,9 +7,9 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 //make new object by replacing old w/out mutating
-function updateObject(oldObject, newValues) {
-    return Object.assign({}, oldObject, newValues)
-}
+// function updateObject(oldObject, newValues) {
+//     return Object.assign({}, oldObject, newValues)
+// }
 
 const initialState = {
     feeling: 0,
@@ -21,25 +21,25 @@ const initialState = {
 
 const feedbackValues = (state = initialState, action) => {
     if (action.type === 'SET_FEELING') {
-        return updateObject(state, { feeling: action.payload })
+        return {...state, feeling: action.payload}
     }
     else if (action.type === 'SET_UNDERSTAND') {
-        return updateObject(state, { understanding: action.payload })
+        return {...state, understanding: action.payload}
     }
     else if (action.type === 'SET_SUPPORTED') {
-        return updateObject(state, { support: action.payload })
+        return {...state, support: action.payload}
     }
     else if (action.type === 'SET_COMMENT') {
         if (action.payload === '') {
             return state
         } else
-            return updateObject(state, { comments: action.payload })
+            return {...state, comments: action.payload}
     }
     else if (action.type === 'CLEAR') {
-        return updateObject(state, { initialState })
+        return {...state,  initialState }
     }
     else if (action.type === 'NAME') {
-        return updateObject(state, { student: action.payload })
+        return {...state, student: action.payload}
     }
     return state;
 };

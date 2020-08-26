@@ -16,7 +16,7 @@ class PageTwo extends Component {
     }
 
     directPrevious = () => {
-        this.props.dispatch({ type: 'SET_UNDERSTANDING', payload: 0 })
+        this.props.dispatch({ type: 'SET_UNDERSTAND', payload: 0 })
         this.props.dispatch({ type: 'SET_FEELING', payload: 0 })
         this.props.history.push('/pageOne')
     }
